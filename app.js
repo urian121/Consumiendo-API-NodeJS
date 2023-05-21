@@ -6,6 +6,7 @@ const path = require("path");
 const app = express();
 app.use(cors());
 
+const PORT = process.env.PORT || 3001;
 /**
  * Middleware para servir archivos estáticos desde la carpeta "public"
  * public-resource funciona como un alias a la carpeta public
@@ -34,6 +35,6 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("Servidor escuchando en el puerto 3000");
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
