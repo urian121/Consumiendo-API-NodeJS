@@ -1,0 +1,30 @@
+body {
+  background-color: #f0f4f3;
+  font-family: "Instrument Sans", sans-serif;
+  font-weight: 500;
+}
+.card {
+  box-shadow: 0 7px 80px rgba(12, 5, 83, 0.17);
+  border-radius: 10px;
+  border: none;
+}
+.card:hover {
+  cursor: pointer;
+  animation-name: hoverTransiton;
+  animation-duration: 0.5s;
+}
+@keyframes hoverTransiton {
+  50% {
+    transform: scale(1.03);
+  }
+}
+.description {
+  text-align: justify;
+}
+ul li {
+  padding: 0px 0px 5px 0px;
+  border-bottom: 1px solid #f0f4f3;
+}
+ul li span {
+  color: #777;
+}
