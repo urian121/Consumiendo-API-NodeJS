@@ -1,21 +1,24 @@
-const axios = require("axios");
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
+import express from "express";
+import cors from "cors";
+import axios from "axios";
 
+// Creando una nueva aplicación Express.
 const app = express();
 app.use(cors());
 
-const PORT = process.env.PORT || 3001;
-/**
- * Middleware para servir archivos estáticos desde la carpeta "public"
- * public-resource funciona como un alias a la carpeta public
- */
-app.use("/public-resource", express.static(path.join(__dirname, "public")));
+// Configurar middleware que analiza el cuerpo de las solicitudes JSON.
+app.use(express.json()); // Para analizar JSON en el cuerpo de las solicitudes
+app.use(express.urlencoded({ extended: true })); // Para analizar datos de formulario en el cuerpo de las solicitudes
 
-// Establece EJS como el motor de plantillas
+app.use("/public", express.static("public"));
+
+/**
+ * Establecer EJS como el Motor de plantillas
+ */
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", "./views");
+
+const PORT = process.env.PORT || 3001;
 
 /**
  * En este caso, utilizamos la palabra clave async antes de la función de manejo de la ruta ((req, res) => { ... })
@@ -24,7 +27,8 @@ app.set("views", path.join(__dirname, "views"));
  * Si la solicitud es exitosa, asignamos los datos a la variable listaJugadores y renderizamos la plantilla index.ejs.
  * Si ocurre algún error, lo capturamos y lo mostramos en la consola.
  */
-const url_API = "https://compratucarro.net/Api_Rest/api_jugadores_nba.json";
+const url_API =
+  "https://projects.urianviera.com/api_node/api_jugadores_nba.json";
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get(url_API);
