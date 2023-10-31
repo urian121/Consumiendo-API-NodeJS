@@ -4,7 +4,7 @@
 
 # Instalar
 
-    npm install express axios ejs
+    npm install express axios ejs cors
 
 
 ![](https://raw.githubusercontent.com/urian121/imagenes-proyectos-github/master/resultado-api-nodejs.PNG)
